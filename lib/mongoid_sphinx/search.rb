@@ -24,7 +24,7 @@ module MongoidSphinx
 
     def document_ids
       @document_ids ||= matches.collect do |match|
-        (100000000000000000000000 + match[:doc]).to_s
+        (99999999999999999999999 + match[:doc]).to_s
       end
     end
 
