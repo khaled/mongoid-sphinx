@@ -19,7 +19,7 @@ module Mongoid
 
       cattr_accessor :search_fields
       cattr_accessor :search_attributes
-      cattr_accessor :index_options
+      cattr_accessor :sphinx_index_options
     end
 
     module ClassMethods
@@ -27,7 +27,7 @@ module Mongoid
       def search_index(options={})
         self.search_fields = options[:fields]
         self.search_attributes = {}
-        self.index_options = options[:options] || {}
+        self.sphinx_index_options = options[:options] || {}
         attribute_types = options[:attribute_types] || {}
         options[:attributes].each do |attrib|
           attr_type = attribute_types[attrib].to_s || self.fields[attrib.to_s].type.to_s
