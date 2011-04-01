@@ -107,7 +107,7 @@ module Mongoid
         client.set_anchor(*options[:geo_anchor]) if options.key?(:geo_anchor)
 
         if options.key?(:sort_by)
-          client.sort_mode = :extended
+          client.sort_mode = options[:sort_mode] || :extended
           client.sort_by = options[:sort_by]
         end
 
