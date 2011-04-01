@@ -113,19 +113,25 @@ module Mongoid
 
         if options.key?(:with)
           options[:with].each do |key, value|
-            client.filters << Riddle::Client::Filter.new(key.to_s, value.is_a?(Range) ? value : value.to_a, false)
+            client.filters << build_sphinx_filter(key, value, false)
           end
         end
 
         if options.key?(:without)
           options[:without].each do |key, value|
-            client.filters << Riddle::Client::Filter.new(key.to_s, value.is_a?(Range) ? value : value.to_a, true)
+            client.filters << build_sphinx_filter(key, value, true)
           end
         end
 
         result = client.query("#{query} @classname #{self.to_s}")
         MongoidSphinx::Search.new(client, self, result)
       end
+
+      def build_sphinx_filter(key, value, exclude)
+        values = (value.is_a?(Range) || value.is_a?(Array)) ? value : [value]
+        Riddle::Client::Filter.new(key.to_s, values, exclude)
+      end
+
     end
 
   end
