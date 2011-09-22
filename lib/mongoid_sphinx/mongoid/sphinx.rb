@@ -106,6 +106,9 @@ module Mongoid
         client.max_matches = options[:max_matches].to_i if options.key?(:max_matches)
         client.set_anchor(*options[:geo_anchor]) if options.key?(:geo_anchor)
 
+        client.group_by = options[:group_by] if options.key?(:group_by)
+        client.group_function = options[:group_function] if options.key?(:group_function)
+
         if options.key?(:sort_by)
           client.sort_mode = options[:sort_mode] || :extended
           client.sort_by = options[:sort_by]
