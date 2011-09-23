@@ -99,6 +99,7 @@ module Mongoid
         client = MongoidSphinx::Configuration.instance.client
 
         client.match_mode = options[:match_mode] || :extended
+        client.rank_mode = options[:rank_mode] if options.key?(:rank_mode)
         client.offset = options[:offset].to_i if options.key?(:offset)
         client.limit = options[:limit].to_i if options.key?(:limit)
         client.limit = options[:per_page].to_i if options.key?(:per_page)
