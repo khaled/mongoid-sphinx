@@ -33,7 +33,7 @@ module MongoidSphinx
     end
 
     def total_pages
-      (raw_result[:total] / client.limit).ceil
+      (raw_result[:total] / client.limit.to_f).ceil
     end
 
     def per_page
