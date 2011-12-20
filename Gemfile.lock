@@ -2,6 +2,7 @@ PATH
   remote: .
   specs:
     mongoid-sphinx (0.1.2)
+      fast_xs (~> 0.8.0)
       mongoid (>= 2.0.0.beta.19)
       riddle (~> 1.1.0)
 
@@ -15,6 +16,7 @@ GEM
     activesupport (3.0.5)
     bson (1.2.4)
     builder (2.1.2)
+    fast_xs (0.8.0)
     i18n (0.5.0)
     mongo (1.2.4)
       bson (>= 1.2.4)

@@ -18,6 +18,7 @@ Gem::Specification.new do |s|
 
   s.add_dependency("mongoid", [">= 2.0.0.beta.19"])
   s.add_dependency("riddle", ["~> 1.1.0"])
+  s.add_dependency("fast_xs", ["~> 0.8.0"])
 
   s.files        = Dir.glob("lib/**/*") + %w(README.markdown)
   s.require_path = 'lib'
